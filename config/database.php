@@ -1,9 +1,8 @@
 <?php
-
-define('DB_HOST', 'localhost'); // Host database
-define('DB_USER', 'root');     // Username database
-define('DB_PASS', '');         // Password database
-define('DB_NAME', 'sewadaya'); // Nama database
+define('DB_HOST', 'localhost'); 
+define('DB_USER', 'root');    
+define('DB_PASS', '');         
+define('DB_NAME', 'traditional_clothing_rental'); 
 
 $pdo = null;
 
@@ -14,7 +13,7 @@ $pdo = null;
  * @throws PDOException Jika koneksi database gagal.
  */
 function connectDB() {
-    global $pdo; 
+    global $pdo;
 
     if ($pdo === null) {
         try {
