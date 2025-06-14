@@ -1,18 +1,26 @@
-# SEWADAYA-PDT
-#👘Proyek ini merupakan sistem penyewaan baju adat sederhana yang dibangun menggunakan PHP dan MySQL. Tujuannya adalah untuk mengelola penyewaan baju adat secara efisien dan aman, dengan memanfaatkan stored procedure, trigger, transaction, dan stored function. Sistem ini juga dilengkapi mekanisme backup otomatis untuk menjaga keamanan data jika terjadi hal yang tidak diinginkan. 
+# SEWADAYA-PDT 👘
+Proyek ini merupakan sistem penyewaan baju adat sederhana yang dibangun menggunakan PHP dan MySQL. Tujuannya adalah untuk mengelola penyewaan baju adat secara efisien dan aman, dengan memanfaatkan stored procedure, trigger, transaction, dan stored function. Sistem ini juga dilengkapi mekanisme backup otomatis untuk menjaga keamanan data jika terjadi hal yang tidak diinginkan. 
 
-#📌 Detail Konsep
-#🧠 Stored Procedure
+![Home](assets/img/home.png)
+
+## 📌 Detail Konsep
+
+### 🧠 Stored Procedure
 Stored procedure bertindak seperti SOP internal yang menetapkan alur eksekusi berbagai operasi penting di sistem penyewaan baju adat. Procedure ini disimpan langsung di lapisan database, sehingga menjamin konsistensi, efisiensi, dan keamanan eksekusi, terutama dalam sistem terdistribusi atau multi-user.
 
+![Procedure](assets/img/procedure.png)
+
 Beberapa procedure penting yang digunakan:
-home.php
-CreateRental : Mencatat penyewaan baju adat, menghitung biaya total, dan memperbarui stok
+
+`home.php`
+* CreateRental : Mencatat penyewaan baju adat, menghitung biaya total, dan memperbarui stok
+ ```php
 $stmt = $pdo->prepare("CALL CreateRental(?, ?, ?, ?, ?, ?)"); 
                 $stmt->execute([$user_id, $item_id, $quantity, $rental_date, $return_date, $item_data['rental_price_per_day']]);
+ ```
 
-history.php
-ReturnRental : Memperbarui status penyewaan menjadi returned dan mengembalikan stok
+`history.php`
+* ReturnRental : Memperbarui status penyewaan menjadi returned dan mengembalikan stok
 $stmt = $pdo->prepare("CALL ReturnRental(?, ?)");
         $stmt->execute([$rental_id, $actual_return_date]); 
 
